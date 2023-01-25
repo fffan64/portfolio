@@ -39,3 +39,7 @@ export function getFromSessionStorage(key: string): string | null {
   }
   return null;
 }
+
+export function delay(time: number) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
