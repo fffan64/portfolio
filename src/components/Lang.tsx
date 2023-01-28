@@ -14,9 +14,9 @@ const Lang = ({ lang, flagCode, skill }: LangProps) => {
         alt={`${lang} flag`}
         height={15}
         width={22.5}
-        className='border border-gray-500'
+        className='border border-gray-500 dark:border-gray-400'
       />
-      <span>{lang}</span>
+      <span className='dark:text-white'>{lang}</span>
       <div className='relative inline-block text-xl after:text-gray-300 after:content-["••••"]'>
         <div
           className={`absolute left-0 top-0 overflow-hidden after:text-primary-400 after:content-["••••"]`}

@@ -1,9 +1,10 @@
 import UnderlineLink from '@/components/links/UnderlineLink';
 
-export const Footer = () => {
+export const Footer = ({ className }: { className?: string }) => {
   return (
-    <footer className='layout flex w-full flex-shrink-0 flex-grow-0 basis-auto items-center justify-center pb-2 text-gray-700 dark:text-gray-300'>
-      {/* <footer className='layout flex w-full items-center justify-center pb-2 text-gray-700 dark:text-gray-300'> */}
+    <footer
+      className={`z-10 flex w-full flex-shrink-0 flex-grow-0 basis-auto items-center justify-center pt-5 pb-2 text-gray-700 dark:text-gray-300 ${className}`}
+    >
       © {new Date().getFullYear()} By{' '}
       <UnderlineLink
         className='ml-1'

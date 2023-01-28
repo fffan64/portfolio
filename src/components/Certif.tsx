@@ -14,7 +14,7 @@ const Certif = ({ dateStr, title, link, icon }: CertifProps) => {
       >
         {icon} {title}
       </a>
-      <span className='text-gray-500'> - {dateStr}</span>
+      <span className='text-gray-500 dark:text-gray-300'> - {dateStr}</span>
     </>
   );
 };

@@ -6,11 +6,19 @@ import { delay } from '@/lib/helper';
 import { Footer } from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({
+  children,
+  headerClassName,
+  footerClassName,
+}: {
+  children: React.ReactNode;
+  headerClassName?: string;
+  footerClassName?: string;
+}) {
   // Put Header or Footer Here
   return (
     <div className='flex min-h-screen w-full flex-col bg-white dark:bg-black'>
-      <Header />
+      <Header className={headerClassName} />
       <motion.div
         initial={{
           // translateX: 300,
@@ -41,7 +49,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       >
         {children}
       </motion.div>
-      <Footer />
+      <Footer className={footerClassName} />
     </div>
   );
 }

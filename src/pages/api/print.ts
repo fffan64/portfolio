@@ -17,6 +17,29 @@ import puppeteer from 'puppeteer-core';
 //   return pdfBuffer
 // };
 
+const setDomainLocalStorage = async (
+  browser: any,
+  url: string,
+  values: any
+) => {
+  const page = await browser.newPage();
+  await page.setRequestInterception(true);
+  page.on('request', (r: any) => {
+    r.respond({
+      status: 200,
+      contentType: 'text/plain',
+      body: 'tweak me.',
+    });
+  });
+  await page.goto(url);
+  await page.evaluate((values: any) => {
+    for (const key in values) {
+      localStorage.setItem(key, values[key]);
+    }
+  }, values);
+  await page.close();
+};
+
 const generatePDFFromUrl = async (url = '') => {
   // Edge executable will return an empty string locally.
   const executablePath = await edgeChromium.executablePath;
@@ -32,13 +55,18 @@ const generatePDFFromUrl = async (url = '') => {
     });
   }
 
+  // set localstorage for default theme
+  const localStorage = { theme: 'light' };
+  await setDomainLocalStorage(browser, url, localStorage);
+
   const page = await browser.newPage();
   await page.goto(url, { waitUntil: 'networkidle0' });
   const pdfBuffer = await page.pdf({
     format: 'a4',
     scale: 0.52,
     margin: {
-      top: '1cm',
+      // top: '1cm',
+      top: '0cm',
     },
   });
 

@@ -10,8 +10,8 @@ export default function NotFoundPage() {
     <Layout>
       <Seo templateTitle='Not Found' />
 
-      <main className='relative flex w-full flex-col items-center justify-center bg-white text-center'>
-        <div className='layout flex flex-col items-center justify-center text-center text-black'>
+      <main className='relative flex w-full flex-col items-center justify-center text-center '>
+        <div className='layout flex flex-col items-center justify-center text-center text-black dark:text-white'>
           <RiAlarmWarningFill
             size={60}
             className='drop-shadow-glow animate-flicker text-red-500'

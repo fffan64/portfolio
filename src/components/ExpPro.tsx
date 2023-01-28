@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import TagBadge from '@/components/TagBadges';
+
 type ExProProps = {
   dateStr: string;
   imgSrcPath?: string;
@@ -27,13 +29,17 @@ const ExpPro = ({
 }: ExProProps) => {
   return (
     <div>
-      <div className='mt-4 text-gray-500'>{dateStr}</div>
+      <div className='mt-4 text-gray-500 dark:text-gray-400'>{dateStr}</div>
       <h3 className='mb-2 mt-2 flex items-center'>
         {imgSrcPath && imgAlt && (
           <Image src={imgSrcPath} height={32} width={32} alt={imgAlt} />
         )}
 
-        <span className={imgSrcPath ? 'flex items-baseline pl-2' : ''}>
+        <span
+          className={`dark:text-white ${
+            imgSrcPath ? 'flex items-baseline pl-2' : ''
+          }`}
+        >
           {link ? (
             <>
               <a
@@ -42,12 +48,12 @@ const ExpPro = ({
               >
                 {title}
               </a>
-              <span className='text-base font-thin text-gray-400'>{`, ${place}`}</span>
+              <span className='text-base font-thin text-gray-400 dark:text-gray-300'>{`, ${place}`}</span>
             </>
           ) : (
             <>
               {title}
-              <span className='text-base font-thin text-gray-400'>{`, ${place}`}</span>
+              <span className='text-base font-thin text-gray-400 dark:text-gray-300'>{`, ${place}`}</span>
             </>
           )}
           {flagCode && (
@@ -57,31 +63,28 @@ const ExpPro = ({
                 alt={`${flagCode} flag`}
                 height={15}
                 width={22.5}
-                className='border border-gray-500'
+                className='border border-gray-500 dark:border-gray-400'
               />
             </span>
           )}
         </span>
       </h3>
       <div>
-        <p>{description}</p>
+        <p className='dark:text-white'>{description}</p>
         {bulletPoints && (
-          <ul className='mt-3 ml-3 list-inside list-disc'>
+          <ul className='mt-3 ml-3 list-inside list-disc dark:text-white'>
             {bulletPoints.map((point, idx) => (
-              <li key={`bulletpoint-${idx}`}>{point}</li>
+              <li className='dark:text-white' key={`bulletpoint-${idx}`}>
+                {point}
+              </li>
             ))}
           </ul>
         )}
 
         {tags && (
-          <p className='mt-4 break-words leading-8 print:hidden'>
+          <p className='mt-4 break-words leading-8 '>
             {tags.map((tag, idx) => (
-              <span
-                key={`tag-${idx}`}
-                className='m-[0.1rem] whitespace-nowrap rounded-md border px-3 py-1 text-sm text-gray-500'
-              >
-                {tag}
-              </span>
+              <TagBadge tag={tag} key={`tag-${idx}`} />
             ))}
           </p>
         )}

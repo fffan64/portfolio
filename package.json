@@ -25,12 +25,13 @@
     "framer-motion": "^8.5.0",
     "hamburger-react": "^2.5.0",
     "next": "^13.1.2",
-    "puppeteer": "^19.1.0",
+    "puppeteer-core": "^10.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-simple-typewriter": "^5.0.1",
     "react-toggle-dark-mode": "^1.1.1",
+    "react-use": "^17.4.0",
     "styled-components": "^5.3.6",
     "tailwind-merge": "^1.8.1",
     "zustand": "^4.3.2"
@@ -60,12 +61,14 @@
     "postcss": "^8.4.21",
     "prettier": "^2.8.3",
     "prettier-plugin-tailwindcss": "^0.1.13",
+    "puppeteer": "^19.1.0",
+    "tailwind-scrollbar": "^2.1.0",
     "tailwindcss": "^3.2.4",
     "typescript": "^4.9.4"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "eslint --max-warnings=10",
+      "eslint",
       "prettier -w"
     ],
     "**/*.{json,css,scss,md,webmanifest}": [

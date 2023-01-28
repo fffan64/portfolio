@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import TagBadge from '@/components/TagBadges';
+
 type EducProps = {
   dateStr: string;
   imgSrcPath?: string;
@@ -27,17 +29,21 @@ const Educ = ({
 }: EducProps) => {
   return (
     <div>
-      <div className='mt-4 text-gray-500'>{dateStr}</div>
+      <div className='mt-4 text-gray-500 dark:text-gray-400'>{dateStr}</div>
 
       <div>
-        <h3>{title}</h3>
+        <h3 className='dark:text-white'>{title}</h3>
 
         <div className='mb-2 flex items-center'>
           {imgSrcPath && imgAlt && (
             <Image src={imgSrcPath} height={32} width={32} alt={imgAlt} />
           )}
 
-          <span className={imgSrcPath ? 'pl-2' : ''}>
+          <span
+            className={
+              imgSrcPath ? 'flex items-baseline pl-2' : 'flex items-baseline '
+            }
+          >
             {link ? (
               <>
                 <a
@@ -46,12 +52,12 @@ const Educ = ({
                 >
                   {uniName}
                 </a>
-                <span className='font-thin text-gray-400'>{`, ${place}`}</span>
+                <span className='font-thin text-gray-400 dark:text-gray-300'>{`, ${place}`}</span>
               </>
             ) : (
               <>
                 {uniName}
-                <span className='font-thin text-gray-400'>{`, ${place}`}</span>
+                <span className='font-thin text-gray-400 dark:text-gray-300'>{`, ${place}`}</span>
               </>
             )}
             {flagCode && (
@@ -61,7 +67,7 @@ const Educ = ({
                   alt={`${flagCode} flag`}
                   height={15}
                   width={22.5}
-                  className='border border-gray-500'
+                  className='border border-gray-500 dark:border-gray-400'
                 />
               </span>
             )}
@@ -69,9 +75,11 @@ const Educ = ({
         </div>
 
         {bulletPoints && (
-          <ul className='mt-3 ml-3 list-inside list-disc'>
+          <ul className='mt-3 ml-3 list-inside list-disc dark:text-white'>
             {bulletPoints.map((point, idx) => (
-              <li key={`bulletpoint-${idx}`}>{point}</li>
+              <li className='dark:text-white' key={`bulletpoint-${idx}`}>
+                {point}
+              </li>
             ))}
           </ul>
         )}
@@ -79,12 +87,7 @@ const Educ = ({
         {tags && (
           <p className='mt-4 break-words leading-8'>
             {tags.map((tag, idx) => (
-              <span
-                key={`tag-${idx}`}
-                className='m-[0.1rem] whitespace-nowrap rounded-md border px-3 py-1 text-sm text-gray-500'
-              >
-                {tag}
-              </span>
+              <TagBadge tag={tag} key={`tag-${idx}`} />
             ))}
           </p>
         )}

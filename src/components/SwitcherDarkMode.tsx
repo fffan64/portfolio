@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 
 import { useDarkModeStore } from '@/hooks/useDarkModeStore';
@@ -13,7 +13,7 @@ export default function Switcher() {
   const { colorTheme, setTheme } = useDarkSide();
   const [, setDarkSide] = useState(colorTheme === 'light' ? true : false);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setIsDark(colorTheme === 'light' ? true : false);
     setDarkSide(colorTheme === 'light' ? true : false);
   }, [colorTheme]);
