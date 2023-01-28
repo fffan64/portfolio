@@ -2,6 +2,7 @@
 // import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { AnimatePresence } from 'framer-motion';
 import { AppProps } from 'next/app';
+import { ToastContainer } from 'react-toastify';
 
 import '@/styles/globals.css';
 // !STARTERCONF This is for demo purposes, remove @/styles/colors.css import immediately
@@ -21,6 +22,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       initial={false}
       onExitComplete={() => window.scrollTo(0, 0)}
     >
+      <ToastContainer position='bottom-right' />
       <Component {...pageProps} key={router.asPath} />
     </AnimatePresence>
   );

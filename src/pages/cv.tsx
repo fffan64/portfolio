@@ -7,6 +7,9 @@ import { GrRobot } from 'react-icons/gr';
 import { IoMdHome, IoMdMail } from 'react-icons/io';
 import { SiGithub, SiLinkedin } from 'react-icons/si';
 import { VscFilePdf } from 'react-icons/vsc';
+import { toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 import Certif from '@/components/Certif';
 import Educ from '@/components/Educ';
@@ -51,38 +54,38 @@ const Cv = () => {
           method: 'GET',
         }
       );
-      const file = await response.blob();
-      setLoad(false);
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(file);
-      link.download = 'CV-Jonathan-Vacherat_Lead-Software-Engineer.pdf';
-      document.body.append(link);
-      link.click();
-      link.remove();
-      // in case the Blob uses a lot of memory
-      setTimeout(() => URL.revokeObjectURL(link.href), 7000);
+      if (response.ok) {
+        const file = await response.blob();
+        setLoad(false);
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(file);
+        link.download = 'CV-Jonathan-Vacherat_Lead-Software-Engineer.pdf';
+        document.body.append(link);
+        link.click();
+        link.remove();
+        // in case the Blob uses a lot of memory
+        setTimeout(() => URL.revokeObjectURL(link.href), 7000);
+        toast('Thank you 😍', {
+          type: 'success',
+          theme: 'colored',
+          style: { backgroundColor: '#34d399' },
+        });
+      } else {
+        throw new Error('Could not generate the PDF 😭');
+      }
     } catch (err: any) {
-      console.log(err.message);
+      console.error(err.message);
       setLoad(false);
+      toast(err.message, {
+        type: 'error',
+        theme: 'colored',
+      });
     }
   };
 
   React.useEffect(() => {
     setUrl(document.location.href);
   }, []);
-
-  // if (load) {
-  //   return (
-  //     <section className='bg-white'>
-  //       <div className='layout flex min-h-screen flex-col items-center justify-center text-center text-black'>
-  //         <GrRobot size={80} className='animate-ping' />
-  //         <h1 className='mt-10 animate-pulse text-4xl md:text-6xl'>
-  //           Generating PDF
-  //         </h1>
-  //       </div>
-  //     </section>
-  //   );
-  // }
 
   return (
     <Layout headerClassName='print:hidden' footerClassName='print:hidden'>

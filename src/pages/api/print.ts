@@ -46,6 +46,7 @@ const generatePDFFromUrl = async (url = '') => {
   let browser;
   if (!executablePath) {
     const puppeteerDev = await import('puppeteer');
+    // throw new Error('BOUM!');
     browser = await puppeteerDev.launch();
   } else {
     browser = await puppeteer.launch({
