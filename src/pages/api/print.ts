@@ -2,7 +2,6 @@
 
 import edgeChromium from 'chrome-aws-lambda';
 import { NextApiRequest, NextApiResponse } from 'next';
-import puppeteerDev from 'puppeteer';
 import puppeteer from 'puppeteer-core';
 
 // const generatePDF = async (html = '') => {
@@ -46,6 +45,7 @@ const generatePDFFromUrl = async (url = '') => {
 
   let browser;
   if (!executablePath) {
+    const puppeteerDev = await import('puppeteer');
     browser = await puppeteerDev.launch();
   } else {
     browser = await puppeteer.launch({
