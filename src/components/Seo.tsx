@@ -7,14 +7,16 @@ const defaultMeta = {
   siteName: "Jonathan's portfolio",
   description: 'Portfolio website of Jonathan Vacherat',
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
-  url: 'https://tsnext-tw.thcl.dev',
+  // url: 'https://tsnext-tw.thcl.dev',
+  url: '/',
   type: 'website',
   robots: 'follow, index',
   /**
    * No need to be filled, will be populated with openGraph function
    * If you wish to use a normal image, just specify the path below
    */
-  image: 'https://tsnext-tw.thcl.dev/images/large-og.png',
+  // image: 'https://tsnext-tw.thcl.dev/images/large-og.png',
+  image: '/favicon/android-chrome-384x384.png',
 };
 
 type SeoProps = {
