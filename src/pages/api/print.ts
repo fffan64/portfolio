@@ -1,8 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-import edgeChromium from 'chrome-aws-lambda';
 import { NextApiRequest, NextApiResponse } from 'next';
 import puppeteer from 'puppeteer-core';
+import edgeChromium from '@sparticuz/chromium';
 
 // const generatePDF = async (html = '') => {
 //   const browser = await puppeteer.launch()
@@ -40,15 +40,15 @@ const setDomainLocalStorage = async (
 };
 
 const generatePDFFromUrl = async (url = '') => {
-  // Edge executable will return an empty string locally.
-  const executablePath = await edgeChromium.executablePath;
+  const isVercel = !!process.env.VERCEL_ENV;
 
   let browser;
-  if (!executablePath) {
+  if (!isVercel) {
     const puppeteerDev = await import('puppeteer');
     // throw new Error('BOUM!');
     browser = await puppeteerDev.launch();
   } else {
+    const executablePath = await edgeChromium.executablePath();
     browser = await puppeteer.launch({
       executablePath,
       args: edgeChromium.args,
