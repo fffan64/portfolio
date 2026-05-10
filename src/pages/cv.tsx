@@ -11,6 +11,8 @@ import { toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 
+import { getXpLevel } from '@/lib/helper';
+
 import Certif from '@/components/Certif';
 import Educ from '@/components/Educ';
 import ExpPro from '@/components/ExpPro';
@@ -18,12 +20,6 @@ import ExtraInt from '@/components/ExtraInt';
 import Lang from '@/components/Lang';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
-
-const getXpLevel = (firstJobYear: number) => {
-  const currentYear = new Date().getFullYear();
-  const yeearsXP = currentYear - firstJobYear;
-  return Math.floor(yeearsXP / 5) * 5;
-};
 
 const Cv = () => {
   const [url, setUrl] = React.useState<string>('');

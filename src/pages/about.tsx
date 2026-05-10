@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 
+import { getXpLevel } from '@/lib/helper';
+
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 
@@ -38,8 +40,10 @@ export default function About() {
               background
             </h4>
             <p className='text-base'>
-              {`I'm a full-stack developer with more than 10 years of experience.
-        Love serverless & automation, gaming also !
+              {`I'm a full-stack dev with more than ${getXpLevel(
+                2011
+              )} years of experience.
+        Love AI, serverless & automation, gaming also !
         Married and proud father of two <3`}
             </p>
           </div>

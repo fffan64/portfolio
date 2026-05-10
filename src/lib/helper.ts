@@ -43,3 +43,9 @@ export function getFromSessionStorage(key: string): string | null {
 export function delay(time: number) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
+
+export function getXpLevel(firstJobYear: number): number {
+  const currentYear = new Date().getFullYear();
+  const yeearsXP = currentYear - firstJobYear;
+  return Math.floor(yeearsXP / 5) * 5;
+}
