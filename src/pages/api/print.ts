@@ -1,8 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
+import edgeChromium from '@sparticuz/chromium';
 import { NextApiRequest, NextApiResponse } from 'next';
 import puppeteer from 'puppeteer-core';
-import edgeChromium from '@sparticuz/chromium';
 
 // const generatePDF = async (html = '') => {
 //   const browser = await puppeteer.launch()
@@ -67,6 +67,7 @@ const generatePDFFromUrl = async (url = '') => {
     scale: 0.52,
     margin: {
       // top: '1cm',
+      // top: '0.5cm',
       top: '0cm',
     },
   });

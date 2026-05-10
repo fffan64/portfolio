@@ -19,6 +19,12 @@ import Lang from '@/components/Lang';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 
+const getXpLevel = (firstJobYear: number) => {
+  const currentYear = new Date().getFullYear();
+  const yeearsXP = currentYear - firstJobYear;
+  return Math.floor(yeearsXP / 5) * 5;
+};
+
 const Cv = () => {
   const [url, setUrl] = React.useState<string>('');
   const [load, setLoad] = React.useState<boolean>(false);
@@ -154,11 +160,11 @@ const Cv = () => {
               <div className='flex justify-between border-b border-gray-200 pb-2 text-base font-medium'>
                 <div className='dark:text-white'>Residence</div>
                 <a
-                  href='https://goo.gl/maps/A8iRxqwVuiePLa1W6'
+                  href='https://maps.app.goo.gl/8UtTbDperD6dVgjW6'
                   className='flex items-center text-primary-500 hover:underline hover:underline-offset-4'
                 >
                   <IoMdHome className='h-5 w-5 pr-1' />
-                  Tokyo
+                  Nord, Marcq-en-Baroeul
                 </a>
               </div>
 
@@ -197,10 +203,12 @@ const Cv = () => {
             </div>
           </div>
 
-          <div className='flex flex-col justify-between border-y-2 border-gray-500 py-4 text-center'>
+          <div className='flex flex-col justify-between border-y-2 border-gray-500 text-center'>
             <CgQuote className='h-10 w-10 dark:text-white' />
-            <span className='mx-14 dark:text-white'>{`I'm a full-stack developer with more than 10 years of experience.
-        Love serverless & automation, gaming also !
+            <span className='mx-14 italic dark:text-white'>{`I'm a full-stack dev with more than ${getXpLevel(
+              2011
+            )} years of experience.
+        Love AI, serverless & automation, gaming also !
         Married and proud father of two <3`}</span>
             <CgQuote className='h-10 w-10 self-end dark:text-white' />
           </div>
@@ -210,7 +218,33 @@ const Cv = () => {
 
             <div className='grid grid-cols-1 gap-5 lg:grid-cols-2'>
               <ExpPro
-                dateStr='Jun 2017 - ?'
+                dateStr='Sep 2023 - ?'
+                imgAlt='AXA Logo'
+                imgSrcPath='/images/axa_logo.jpg'
+                title='AXA France IARD/VIE'
+                place='Wasquehal, FR'
+                description='Lead Software Engineer / Team Leader'
+                bulletPoints={[
+                  'Full selfcare subscription app',
+                  'AXA Design System (React component library) development and maintenance',
+                  'Internalization of coding guidelines and good practices',
+                  'AI integration and use cases development / experimentation',
+                ]}
+                tags={[
+                  'Agile',
+                  'AI',
+                  'Openshift',
+                  'Dotnet',
+                  'React',
+                  'TypeScript',
+                  'Gherkin',
+                  'BDD/TDD',
+                ]}
+                flagCode='fr'
+              />
+
+              <ExpPro
+                dateStr='Jun 2017 - Aug 2023'
                 imgAlt='AXA Logo'
                 imgSrcPath='/images/axa_logo.jpg'
                 title='AXA Life Japan'
@@ -226,15 +260,14 @@ const Cv = () => {
                 ]}
                 tags={[
                   'Agile',
-                  'Cloud',
+                  // 'Cloud',
                   'AWS',
                   'Openshift',
-                  'Jenkins',
+                  // 'Jenkins',
                   'Serverless',
                   'NodeJs',
                   'React',
-                  'Jest',
-                  'TypeScript',
+                  // 'TypeScript',
                   'Java/Springboot',
                 ]}
                 flagCode='jp'
@@ -401,13 +434,14 @@ const Cv = () => {
             <p className='break-words pt-4 leading-8'>
               <ExtraInt
                 tags={[
+                  'Technology',
+                  'IA',
                   'Gaming',
-                  'Football',
+                  'Sport',
                   'Art/3D',
                   'Movie',
                   'TV',
                   'Shows/Anime',
-                  'Technology',
                 ]}
               />
             </p>

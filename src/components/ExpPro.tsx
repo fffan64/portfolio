@@ -82,7 +82,7 @@ const ExpPro = ({
         )}
 
         {tags && (
-          <p className='mt-4 break-words leading-8 '>
+          <p className='mt-4 flex flex-wrap whitespace-pre-line break-words leading-8'>
             {tags.map((tag, idx) => (
               <TagBadge tag={tag} key={`tag-${idx}`} />
             ))}
